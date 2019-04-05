@@ -2,6 +2,11 @@ package com.technotron.internetbanking.account.dao;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -42,11 +47,19 @@ public class AccountDaoImpl implements AccountDao {
 
 	}
 
-	/*
-	 * @Override public List<Account> getAllAccount() {
-	 * 
-	 * List<Account> accounts = session.createCriteria(Account.class).list(); return
-	 * accounts; }
-	 */
+	
+	  @Override 
+	  public List<Account> getAllAccount() {
+		  Session session = sessionFactory.getCurrentSession();
+		  CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+		  CriteriaQuery<Account> criteriaQuery = criteriaBuilder.createQuery(Account.class);
+		  Root<Account> rootEntry = criteriaQuery.from(Account.class);
+		  CriteriaQuery<Account> all = criteriaQuery.select(rootEntry);
+		  TypedQuery<Account> allQuery = session.createQuery(all);
+ 
+		  return allQuery.getResultList(); 
+	  
+	  }
+	 
 
 }

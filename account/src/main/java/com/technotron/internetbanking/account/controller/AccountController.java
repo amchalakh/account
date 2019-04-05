@@ -1,5 +1,7 @@
 package com.technotron.internetbanking.account.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
@@ -33,6 +35,14 @@ public class AccountController {
 	@RequestMapping("/")
 	public String getAccount() {
 		return "success";
+	}
+	
+	@GetMapping("/getAllAccount")
+	public List<Account> getAllAccount(){
+		
+		List<Account> accounts = accountService.getAllAccount();
+		return accounts;
+		
 	}
 
 }
