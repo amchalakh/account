@@ -28,4 +28,10 @@ public class AccountServiceImpl implements AccountService{
 		return accounts;
 	}
 
+	@Override
+	public Account getAccount(int id) {
+		Account account = accountDao.getAccount(id);
+		return account;
+	}
+
 }

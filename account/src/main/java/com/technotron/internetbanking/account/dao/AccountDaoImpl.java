@@ -50,6 +50,8 @@ public class AccountDaoImpl implements AccountDao {
 	
 	  @Override 
 	  public List<Account> getAllAccount() {
+		  
+		  // Get all entities from table using Criteria Query
 		  Session session = sessionFactory.getCurrentSession();
 		  CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 		  CriteriaQuery<Account> criteriaQuery = criteriaBuilder.createQuery(Account.class);
@@ -58,8 +60,22 @@ public class AccountDaoImpl implements AccountDao {
 		  TypedQuery<Account> allQuery = session.createQuery(all);
  
 		  return allQuery.getResultList(); 
+		  
+		/*
+		 * Get all entities from table using JPQL return
+		 * session.createQuery("SELECT a FROM Account a",
+		 * Account.class).getResultList();
+		 */
 	  
 	  }
+
+
+	@Override
+	public Account getAccount(int id) {
+		Session session = sessionFactory.getCurrentSession();
+		Account account = session.get(Account.class, id);
+		return account;
+	}
 	 
 
 }

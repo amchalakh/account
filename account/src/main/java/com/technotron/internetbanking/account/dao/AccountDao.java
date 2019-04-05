@@ -8,5 +8,6 @@ public interface AccountDao {
 	
 	public void addAccount(Account account);
 	public List<Account> getAllAccount();
+	public Account getAccount(int id);
 
 }
