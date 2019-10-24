@@ -32,6 +32,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.jacoco</groupId>
+			<artifactId>jacoco-maven-plugin</artifactId>
+			<version>0.8.5</version>
+		</dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>
@@ -77,6 +82,7 @@
 			<optional>true</optional>
 		</dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>
